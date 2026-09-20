@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator LED Videotron & Pattern Test Card Generator</title>
+  <meta name="description" content="Kalkulator profesional LED Videotron: hitung resolusi real pixel, rasio aspek, daya listrik, port controller NovaStar, serta generator gambar dan video test card 1:1 pixel-perfect.">
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="css/testcard.css">
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+            <circle cx="7" cy="8" r="1"></circle>
+            <circle cx="12" cy="8" r="1"></circle>
+            <circle cx="17" cy="8" r="1"></circle>
+          </svg>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="brand-title">VIDEOTRON PRO</span>
+            <span class="brand-badge">CALCULATOR & PATTERN</span>
+          </div>
+          <p style="font-size: 0.72rem; color: var(--text-muted);">LED Screen Pixel Engine & Test Card Studio</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs" id="mainNavTabs">
+        <button class="tab-btn active" data-target="tab-calculator" id="navTabCalculator">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M16 10h.01"></path>
+            <path d="M12 10h.01"></path>
+            <path d="M8 10h.01"></path>
+            <path d="M12 14h.01"></path>
+            <path d="M8 14h.01"></path>
+            <path d="M12 18h.01"></path>
+            <path d="M8 18h.01"></path>
+          </svg>
+          Kalkulator & Spesifikasi
+        </button>
+        <button class="tab-btn" data-target="tab-testcard" id="navTabTestcard">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="22" y1="12" x2="18" y2="12"></line>
+            <line x1="6" y1="12" x2="2" y2="12"></line>
+            <line x1="12" y1="6" x2="12" y2="2"></line>
+            <line x1="12" y1="22" x2="12" y2="18"></line>
+          </svg>
+          Generator Test Card & Video
+        </button>
+        <button class="tab-btn" data-target="tab-cabling" id="navTabCabling">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="6" height="6" rx="1"></rect>
+            <rect x="16" y="2" width="6" height="6" rx="1"></rect>
+            <rect x="9" y="16" width="6" height="6" rx="1"></rect>
+            <path d="M5 8v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"></path>
+            <path d="M12 12v4"></path>
+          </svg>
+          Diagram Jalur Kabel (Data)
+        </button>
+      </nav>
+
+      <!-- Top Action Buttons -->
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" id="btnQuickPrint" title="Cetak Ringkasan Spesifikasi">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Cetak Specs
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content View -->
+  <main class="main-wrapper">
+
+    <!-- ====================================================================
+         TAB 1: KALKULATOR & SPESIFIKASI
+         ==================================================================== -->
+    <section class="view-section active" id="tab-calculator">
+      <div class="calc-layout">
+        
+        <!-- Left: Input Controls -->
+        <div class="glass-panel calc-controls">
+          <div class="section-header" style="margin-bottom: 0.5rem;">
+            <h2 class="section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+              Parameter Videotron
+            </h2>
+          </div>
+
+          <!-- Mode Switcher -->
+          <div class="form-group">
+            <label class="form-label">Metode Input Order</label>
+            <div class="mode-switch-group" id="calcModeGroup">
+              <button class="mode-btn active" data-mode="dimension" id="modeBtnDimension">Ukuran Fisik (m)</button>
+              <button class="mode-btn" data-mode="ratio" id="modeBtnRatio">Target Rasio (16:9 dll)</button>
+              <button class="mode-btn" data-mode="cabinet" id="modeBtnCabinet">Jumlah Cabinet</button>
+              <button class="mode-btn" data-mode="resolution" id="modeBtnResolution">Resolusi (px)</button>
+            </div>
+          </div>
+
+          <!-- Mode Dimension Inputs -->
+          <div id="inputGroupDimension">
+            <div class="form-group">
+              <label class="form-label">
+                Ukuran Layar Diminta (Target)
+                <span class="hint">Lebar × Tinggi (Meter)</span>
+              </label>
+              <div class="input-row">
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputTargetW" class="form-input input-with-affix" value="5.0" step="0.1" min="0.5">
+                  <span class="input-affix">m (L)</span>
+                </div>
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputTargetH" class="form-input input-with-affix" value="3.0" step="0.1" min="0.5">
+                  <span class="input-affix">m (T)</span>
+                </div>
+              </div>
+              <!-- Preset Chips -->
+              <div class="chip-row">
+                <button type="button" class="chip-btn" data-w="5" data-h="3">5 × 3 m (Favorite)</button>
+                <button type="button" class="chip-btn" data-w="4" data-h="3">4 × 3 m (4:3)</button>
+                <button type="button" class="chip-btn" data-w="6" data-h="3.5">6 × 3.5 m (16:9)</button>
+                <button type="button" class="chip-btn" data-w="8" data-h="4.5">8 × 4.5 m (16:9)</button>
+                <button type="button" class="chip-btn" data-w="3" data-h="2">3 × 2 m</button>
+                <button type="button" class="chip-btn" data-w="10" data-h="6">10 × 6 m</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode Ratio Inputs (Kalkulator by Target Aspect Ratio) -->
+          <div id="inputGroupRatio" style="display: none;">
+            <div class="form-group">
+              <label class="form-label">
+                Pilihan Target Aspect Ratio
+                <span class="hint">Format Video & Tampilan Layar</span>
+              </label>
+              <select id="selectTargetRatio" class="form-select" style="margin-bottom: 0.6rem;">
+                <option value="16:9" selected>📺 16:9 — Standard Widescreen (Full HD / 4K / 8K Broadcast)</option>
+                <option value="4:3">📽️ 4:3 — Traditional Presentation / Standard Video</option>
+                <option value="21:9">🎬 21:9 — Ultrawide Cinema Scope / Stage Backdrop</option>
+                <option value="32:9">🖥️ 32:9 — Super Ultrawide (Dual 16:9 Screen)</option>
+                <option value="1:1">⏹️ 1:1 — Square Backdrop / Cube Display</option>
+                <option value="9:16">📱 9:16 — Vertical Mobile / TikTok / Reels Banner</option>
+                <option value="16:10">💻 16:10 — Computer Monitor Standard (WUXGA)</option>
+                <option value="custom">⚙️ Custom Ratio (Tentukan Nilai X : Y Bebas)</option>
+              </select>
+
+              <!-- Custom Ratio Inputs (visible only if custom selected) -->
+              <div id="ratioCustomInputsRow" class="input-row" style="display: none; margin-bottom: 0.6rem;">
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputCustomRatioW" class="form-input input-with-affix" value="16" step="0.1" min="0.1">
+                  <span class="input-affix">Rasio (L)</span>
+                </div>
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputCustomRatioH" class="form-input input-with-affix" value="9" step="0.1" min="0.1">
+                  <span class="input-affix">Rasio (T)</span>
+                </div>
+              </div>
+
+              <!-- Base Dimension Parameter -->
+              <label class="form-label" style="margin-top: 0.4rem;">
+                Parameter Acuan Ukuran Layar
+                <span class="hint">Pilih salah satu dimensi acuan</span>
+              </label>
+              <div style="display: grid; grid-template-columns: 140px 1fr; gap: 0.5rem; align-items: center; margin-bottom: 0.6rem;">
+                <select id="selectRatioBaseType" class="form-select" style="padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+                  <option value="width" selected>Lebar (m)</option>
+                  <option value="height">Tinggi (m)</option>
+                  <option value="area">Luas (m²)</option>
+                  <option value="cols">Jumlah Kolom</option>
+                </select>
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputRatioBaseValue" class="form-input input-with-affix" value="6.0" step="0.1" min="0.5">
+                  <span class="input-affix" id="ratioBaseUnitLabel">Meter (L)</span>
+                </div>
+              </div>
+
+              <!-- Quick Ratio Exact Presets Chips -->
+              <label class="form-label" style="margin-top: 0.5rem; font-size: 0.72rem; color: var(--accent-cyan); font-weight: 600;">
+                ⭐ Rekomendasi Ukuran Standar Pas (Exact / Menghindari Distorsi):
+              </label>
+              <div class="chip-row" id="ratioExactPresetsContainer">
+                <!-- Dynamically populated chips -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode Cabinet Inputs -->
+          <div id="inputGroupCabinet" style="display: none;">
+            <div class="form-group">
+              <label class="form-label">
+                Jumlah Cabinet Layar
+                <span class="hint">Kolom × Baris (Pcs)</span>
+              </label>
+              <div class="input-row">
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputCabinetCols" class="form-input input-with-affix" value="10" step="1" min="1">
+                  <span class="input-affix">Kolom</span>
+                </div>
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputCabinetRows" class="form-input input-with-affix" value="6" step="1" min="1">
+                  <span class="input-affix">Baris</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode Resolution Inputs -->
+          <div id="inputGroupResolution" style="display: none;">
+            <div class="form-group">
+              <label class="form-label">
+                Target Resolusi Layar
+                <span class="hint">Lebar × Tinggi (Pixels)</span>
+              </label>
+              <div class="input-row">
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputPixelW" class="form-input input-with-affix" value="1920" step="1" min="64">
+                  <span class="input-affix">px (L)</span>
+                </div>
+                <div class="input-affix-wrapper">
+                  <input type="number" id="inputPixelH" class="form-input input-with-affix" value="1080" step="1" min="64">
+                  <span class="input-affix">px (T)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pitch Selector (Unilumin P2.6 Series) -->
+          <div class="form-group">
+            <label class="form-label">
+              Hardware LED: Unilumin P2.6 Series
+              <span class="hint" id="selectedPitchCategory">Unilumin Rental Pro</span>
+            </label>
+            <div class="pitch-select-grid" id="pitchSelectContainer">
+              <!-- Dynamically rendered pitch options -->
+            </div>
+          </div>
+
+          <!-- Cabinet Dimension Selector -->
+          <div class="form-group">
+            <label class="form-label">Dimensi Cabinet</label>
+            <select id="selectCabinetType" class="form-select">
+              <!-- Dynamically populated from presets -->
+            </select>
+          </div>
+
+          <!-- Custom Cabinet Dimensions (Shown when custom is selected) -->
+          <div id="customCabinetGroup" style="display: none;">
+            <div class="input-row">
+              <div class="input-affix-wrapper">
+                <input type="number" id="inputCustomCabW" class="form-input input-with-affix" value="500" step="1" min="100">
+                <span class="input-affix">mm (L)</span>
+              </div>
+              <div class="input-affix-wrapper">
+                <input type="number" id="inputCustomCabH" class="form-input input-with-affix" value="500" step="1" min="100">
+                <span class="input-affix">mm (T)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button to Studio -->
+          <button type="button" class="btn btn-primary" id="btnGoToStudio" style="width: 100%; margin-top: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="22" y1="12" x2="18" y2="12"></line>
+              <line x1="6" y1="12" x2="2" y2="12"></line>
+              <line x1="12" y1="6" x2="12" y2="2"></line>
+              <line x1="12" y1="22" x2="12" y2="18"></line>
+            </svg>
+            Generate Test Card & Video (1:1)
+          </button>
+        </div>
+
+        <!-- Right: Real-time Calculation Results -->
+        <div class="calc-results">
+
+          <!-- Hero Resolution & Ratio Banner -->
+          <div class="hero-res-card">
+            <div class="hero-top">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span class="pill pill-cyan" id="badgePitchTag">P2.604 (P2.6)</span>
+                <span class="pill pill-green" id="badgeCabinetCount">60 Cabinet (10×6)</span>
+              </div>
+              <span class="hero-pixels-badge" id="badgeTotalPixels">2.211.840 Pixels</span>
+            </div>
+
+            <div class="hero-res-display">
+              <span class="hero-res-val" id="resPixelDisplay">1920 × 1152</span>
+              <span class="hero-res-unit">REAL PIXEL (W × H)</span>
+            </div>
+
+            <!-- Aspect Ratio Indicator -->
+            <div class="ratio-highlight-row">
+              <div class="ratio-chip" id="ratioChip">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span id="aspectRatioVal">5:3</span>
+                <span style="font-size: 0.8rem; opacity: 0.8;" id="aspectDecimalVal">(1.67:1)</span>
+              </div>
+              <div class="ratio-comparison-text" id="ratioComparisonText">
+                Mendekati standar <strong>16:9 (1.78:1)</strong> — Layar sedikit lebih tinggi / 4.8% letterbox jika konten 16:9 diputar full width.
+              </div>
+            </div>
+          </div>
+
+          <!-- Magnimage EC90 Optimizer Card (Max 8.3M Pixels) -->
+          <div class="glass-panel ec90-optimizer-card" id="ec90Card" style="padding: 1.25rem; border: 1px solid rgba(0, 229, 255, 0.25); background: linear-gradient(135deg, rgba(16, 22, 36, 0.85), rgba(11, 15, 25, 0.95)); border-radius: var(--radius-lg); position: relative; overflow: hidden;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-cyan);">
+                  <rect x="2" y="2" width="20" height="20" rx="3"></rect>
+                  <path d="M7 12h10"></path>
+                  <path d="M12 7v10"></path>
+                </svg>
+                <span style="font-size: 0.92rem; font-weight: 700; color: #ffffff; letter-spacing: -0.01em;">EC90 Optimizer (Max 8.3M Pixels)</span>
+                <span class="pill pill-cyan" style="font-size: 0.68rem; padding: 0.15rem 0.45rem;">Magnimage DP 1.2</span>
+              </div>
+              <span id="ec90StatusBadge" class="pill pill-green" style="font-size: 0.75rem; font-weight: 700;">
+                Safe for 1 Cable DP (No Downscale Needed)
+              </span>
+            </div>
+
+            <!-- Condition A: Native Pixels <= 8.3M (Safe State) -->
+            <div id="ec90SafeView" style="display: block;">
+              <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: var(--radius-md); padding: 0.65rem 0.85rem;">
+                <span style="color: var(--accent-emerald); font-weight: 700;">✓ Kapasitas Aman:</span> Total pixel layar (<strong id="ec90NativePixelText" style="color: #fff;">2.211.840</strong> px) berada di bawah batas maksimal <strong>8.300.000 Pixels</strong> untuk 1 kabel DisplayPort 1.2 Magnimage EC90. Sinyal video dapat dikirim 100% native 1:1 tanpa downscaling.
+              </div>
+            </div>
+
+            <!-- Condition B: Native Pixels > 8.3M (Optimal Downscale Result) -->
+            <div id="ec90DownscaleView" style="display: none;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.6rem; background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.18); border-radius: var(--radius-md); padding: 0.75rem 0.9rem;">
+                <div>
+                  <span style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 0.15rem;">Resolusi Target Downscale (Divisible by 8)</span>
+                  <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+                    <span class="hero-res-val" id="ec90TargetResDisplay" style="font-size: 1.9rem; color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 800; text-shadow: 0 0 16px rgba(0, 229, 255, 0.35);">3584 × 2240</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">PX (Downscaled)</span>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Total Pixel Downscale:</span>
+                  <span id="ec90TargetPixelDisplay" style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: #fff;">8.028.160 Pixels</span>
+                  <span id="ec90ScalePercentDisplay" class="pill pill-cyan" style="font-size: 0.68rem; margin-left: 0.3rem;">80.3%</span>
+                </div>
+              </div>
+
+              <!-- Metrics Grid (Aspect Ratio Lock & 8-Pixel Alignment) -->
+              <div class="stat-grid-inner" style="grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.5rem;">
+                <div class="stat-mini-box" style="padding: 0.5rem 0.65rem;">
+                  <span class="stat-mini-label" style="font-size: 0.68rem;">Rasio Aspek Layar</span>
+                  <span class="stat-mini-val" id="ec90RatioDisplay" style="font-size: 0.85rem; color: var(--accent-cyan);">100% Lock</span>
+                </div>
+                <div class="stat-mini-box" style="padding: 0.5rem 0.65rem;">
+                  <span class="stat-mini-label" style="font-size: 0.68rem;">Kelipatan 8px (W & H)</span>
+                  <span class="stat-mini-val" style="font-size: 0.85rem; color: var(--accent-emerald);">Divisible by 8 ✓</span>
+                </div>
+                <div class="stat-mini-box" style="padding: 0.5rem 0.65rem;">
+                  <span class="stat-mini-label" style="font-size: 0.68rem;">Limit 1 Kabel DP 1.2</span>
+                  <span class="stat-mini-val" style="font-size: 0.85rem; color: #ffffff;">Max 8.3M Px</span>
+                </div>
+              </div>
+
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.6rem; line-height: 1.4;">
+                💡 <em>Catatan Setup:</em> Atur custom resolution EDID pada media server (Resolume / Datapath / PC) ke <strong id="ec90EdidText" style="color: #fff;">3584 × 2240</strong>, lalu gunakan prosesor Magnimage EC90 untuk memetakan sinyal ke Native Resolution layar secara presisi tanpa distorsi aspek rasio.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 4 Main Metric Cards -->
+          <div class="grid-2">
+            
+            <!-- Card 1: Dimensi Fisik Real -->
+            <div class="glass-panel stat-card">
+              <div class="stat-header">
+                <span class="stat-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"></path>
+                    <path d="m14.5 12.5 2-2"></path>
+                    <path d="m11.5 9.5 2-2"></path>
+                    <path d="m8.5 6.5 2-2"></path>
+                    <path d="m5.5 3.5 2-2"></path>
+                  </svg>
+                  Dimensi Fisik Real
+                </span>
+                <span class="pill pill-cyan" id="realAreaBadge">15.00 m²</span>
+              </div>
+              <div class="stat-value-large" id="realDimensionsDisplay">5.000 × 3.000 m</div>
+              <div class="stat-subtext" id="dimensionDifferenceSubtext">
+                Persis sesuai dengan target order 5.0m × 3.0m (100% Fit).
+              </div>
+              <div class="stat-grid-inner">
+                <div class="stat-mini-box">
+                  <span class="stat-mini-label">Ukuran mm</span>
+                  <span class="stat-mini-val" id="valRealMm">5000 × 3000 mm</span>
+                </div>
+                <div class="stat-mini-box">
+                  <span class="stat-mini-label">Diagonal Layar</span>
+                  <span class="stat-mini-val" id="valDiagonal">5.83 m (229.6")</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Konfigurasi Cabinet & Module -->
+            <div class="glass-panel stat-card">
+              <div class="stat-header">
+                <span class="stat-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                  Susunan Cabinet & Grid
+                </span>
+                <span class="pill pill-green" id="totalCabinetBadge">60 Pcs</span>
+              </div>
+              <div class="stat-value-large" id="cabinetGridDisplay">10 Kolom × 6 Baris</div>
+              <div class="stat-subtext" id="cabinetSpecSubtext">
+                Ukuran cabinet 500 × 500 mm (Resolusi per cabinet: 192 × 192 px).
+              </div>
+              <div class="stat-grid-inner">
+                <div class="stat-mini-box">
+                  <span class="stat-mini-label">Total Cabinet</span>
+                  <span class="stat-mini-val" id="valTotalCab">60 Unit</span>
+                </div>
+                <div class="stat-mini-box">
+                  <span class="stat-mini-label">Estimasi Berat</span>
+                  <span class="stat-mini-val" id="valTotalWeight">~390 kg</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Daya Listrik & Kebutuhan Arus -->
+            <div class="glass-panel stat-card">
+              <div class="stat-header">
+                <span class="stat-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                  Kelistrikan & Konsumsi Daya
+                </span>
+                <span class="pill pill-amber" id="powerMaxBadge">Max: 10.8 kW</span>
+              </div>
+              <div class="stat-value-large" id="powerDisplay">3.6 kW / 10.8 kW</div>
+              <div class="stat-subtext">
+                Rata-rata (Typical 3.6 kW) • Maksimal saat gambar full putih (10.8 kW).
+              </div>
+              <div class="stat-grid-inner">
+                <div class="stat-mini-box">
+                  <span class="stat-mini-label">Arus 1-Fasa (220V)</span>
+                  <span class="stat-mini-val" id="valCurrent1P">49.1 A (MCB 63A)</span>
+                </div>
+                <div class="stat-mini-box">
+                  <span class="stat-mini-label">Arus 3-Fasa (380V)</span>
+                  <span class="stat-mini-val" id="valCurrent3P">16.4 A (MCB 25A)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Controller & Port Capacity -->
+            <div class="glass-panel stat-card">
+              <div class="stat-header">
+                <span class="stat-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  </svg>
+                  Prosesor NovaStar & Port LAN
+                </span>
+                <span class="pill pill-cyan" id="portsBadge">4 Port LAN</span>
+              </div>
+              <div class="stat-value-large" id="controllerNameDisplay">NovaStar VX400 / VX600</div>
+              <div class="stat-subtext" id="controllerPortSubtext">
+                Membutuhkan 4 Port Gigabit Ethernet NovaStar (Kapasitas: 650.000 px / port).
+              </div>
+              <div class="port-load-bar-wrapper">
+                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted);">
+                  <span>Beban Port NovaStar</span>
+                  <span id="portLoadPercentText">85.1% Terpakai</span>
+                </div>
+                <div class="port-load-bar-bg">
+                  <div class="port-load-bar-fill" id="portLoadBarFill" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <!-- Single Unit Models -->
+              <div style="margin-top: 0.5rem;">
+                <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 0.2rem;">Rekomendasi Single Unit:</span>
+                <div id="controllerAlternativeList" style="display: flex; flex-wrap: wrap; gap: 0.35rem;"></div>
+              </div>
+
+              <!-- Multi-Unit Cascading Solutions -->
+              <div style="margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-glass);">
+                <span style="font-size: 0.68rem; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 0.3rem; margin-bottom: 0.25rem;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="8" height="8" rx="1"></rect>
+                    <rect x="14" y="2" width="8" height="8" rx="1"></rect>
+                    <rect x="2" y="14" width="8" height="8" rx="1"></rect>
+                    <rect x="14" y="14" width="8" height="8" rx="1"></rect>
+                  </svg>
+                  Solusi Multi-Unit / Cascading (Rental Inventory):
+                </span>
+                <div id="cascadeAlternativeList" style="display: flex; flex-direction: column; gap: 0.3rem;"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Action Banner -->
+          <div class="glass-panel action-banner">
+            <div class="action-banner-info">
+              <div class="action-banner-title">Siap untuk Pengujian Layar & Setup Lapangan?</div>
+              <div class="action-banner-sub">Hasilkan test card beresolusi 1:1 pixel atau lihat jalur kabel data controller secara interaktif.</div>
+            </div>
+            <div class="action-btns">
+              <button class="btn btn-outline-cyan" id="btnViewCabling">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 8v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"></path>
+                </svg>
+                Jalur Kabel Data
+              </button>
+              <button class="btn btn-primary" id="btnOpenTestStudio">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="22" y1="12" x2="18" y2="12"></line>
+                  <line x1="6" y1="12" x2="2" y2="12"></line>
+                  <line x1="12" y1="6" x2="12" y2="2"></line>
+                  <line x1="12" y1="22" x2="12" y2="18"></line>
+                </svg>
+                Buka Studio Test Card
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 2: GENERATOR TEST CARD & VIDEO
+         ==================================================================== -->
+    <section class="view-section" id="tab-testcard">
+      <div class="studio-layout">
+        
+        <!-- Studio Controls Left Sidebar -->
+        <div class="glass-panel studio-controls">
+          <div class="section-header" style="margin-bottom: 0.25rem;">
+            <h2 class="section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="22" y1="12" x2="18" y2="12"></line>
+                <line x1="6" y1="12" x2="2" y2="12"></line>
+                <line x1="12" y1="6" x2="12" y2="2"></line>
+                <line x1="12" y1="22" x2="12" y2="18"></line>
+              </svg>
+              Pola & Kalibrasi
+            </h2>
+          </div>
+
+          <!-- Pattern Selection Grid (12 Professional AV Calibration Patterns) -->
+          <div class="form-group">
+            <label class="form-label">
+              Tipe Pola Kalibrasi Layar
+              <span class="hint">12 Pola Standar AV</span>
+            </label>
+            <div class="pattern-preset-grid" style="grid-template-columns: repeat(2, 1fr); max-height: 270px; overflow-y: auto; padding-right: 0.2rem;">
+              <button class="pattern-btn active" data-pattern="smpte">
+                <div class="pattern-preview-thumbnail thumb-smpte"></div>
+                <span>SMPTE 75% Bars</span>
+              </button>
+              <button class="pattern-btn" data-pattern="hd-bars">
+                <div class="pattern-preview-thumbnail" style="background: linear-gradient(90deg, #fff 12.5%, #ff0 12.5% 25%, #0ff 25% 37.5%, #0f0 37.5% 50%, #f0f 50% 62.5%, #f00 62.5% 75%, #00f 75% 87.5%, #000 87.5%);"></div>
+                <span>HD 100% EBU Bars</span>
+              </button>
+              <button class="pattern-btn" data-pattern="multiburst">
+                <div class="pattern-preview-thumbnail" style="background: repeating-linear-gradient(90deg, #fff, #fff 2px, #000 2px, #000 4px);"></div>
+                <span>Multi-Burst Lines</span>
+              </button>
+              <button class="pattern-btn" data-pattern="crosshatch">
+                <div class="pattern-preview-thumbnail" style="background: repeating-linear-gradient(0deg, #0b0f19, #0b0f19 8px, #fff 8px, #fff 9px), repeating-linear-gradient(90deg, #0b0f19, #0b0f19 8px, #fff 8px, #fff 9px);"></div>
+                <span>Crosshatch Grid</span>
+              </button>
+              <button class="pattern-btn" data-pattern="gradient">
+                <div class="pattern-preview-thumbnail thumb-gradient"></div>
+                <span>RGBW Gradients</span>
+              </button>
+              <button class="pattern-btn" data-pattern="gamma-steps">
+                <div class="pattern-preview-thumbnail" style="background: linear-gradient(90deg, #000 0%, #333 25%, #666 50%, #999 75%, #fff 100%);"></div>
+                <span>32-Step Gamma</span>
+              </button>
+              <button class="pattern-btn" data-pattern="siemens-star">
+                <div class="pattern-preview-thumbnail" style="background: conic-gradient(#fff 0deg 10deg, #000 10deg 20deg, #fff 20deg 30deg, #000 30deg 40deg, #fff 40deg 50deg, #000 50deg 60deg, #fff 60deg 70deg, #000 70deg 80deg, #fff 80deg 90deg, #000 90deg 100deg, #fff 100deg 110deg, #000 110deg 120deg, #fff 120deg 130deg, #000 130deg 140deg, #fff 140deg 150deg, #000 150deg 160deg, #fff 160deg 170deg, #000 170deg 180deg);"></div>
+                <span>Siemens Focus Star</span>
+              </button>
+              <button class="pattern-btn" data-pattern="color-wheel">
+                <div class="pattern-preview-thumbnail" style="background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);"></div>
+                <span>360° Color Wheel</span>
+              </button>
+              <button class="pattern-btn" data-pattern="split-contrast">
+                <div class="pattern-preview-thumbnail" style="background: linear-gradient(90deg, #000 50%, #fff 50%);"></div>
+                <span>Split Contrast Field</span>
+              </button>
+              <button class="pattern-btn" data-pattern="checker">
+                <div class="pattern-preview-thumbnail thumb-checker"></div>
+                <span>1px Checkerboard</span>
+              </button>
+              <button class="pattern-btn" data-pattern="geometry">
+                <div class="pattern-preview-thumbnail thumb-geometry"></div>
+                <span>Geometry Circles</span>
+              </button>
+              <button class="pattern-btn" data-pattern="grid">
+                <div class="pattern-preview-thumbnail" style="background: repeating-linear-gradient(0deg, #1e293b, #1e293b 8px, #00e5ff 8px, #00e5ff 9px), repeating-linear-gradient(90deg, #1e293b, #1e293b 8px, #00e5ff 8px, #00e5ff 9px);"></div>
+                <span>Matriks Cabinet</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dead Pixel Solid Colors -->
+          <div class="form-group">
+            <label class="form-label">Uji Dead / Stuck Pixel (Solid)</label>
+            <div class="chip-row">
+              <button type="button" class="chip-btn" data-solid="solid-red" style="color: #ff4d4d; border-color: rgba(255, 77, 77, 0.4);">Merah (R)</button>
+              <button type="button" class="chip-btn" data-solid="solid-green" style="color: #00ff66; border-color: rgba(0, 255, 102, 0.4);">Hijau (G)</button>
+              <button type="button" class="chip-btn" data-solid="solid-blue" style="color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);">Biru (B)</button>
+              <button type="button" class="chip-btn" data-solid="solid-white" style="color: #ffffff; border-color: rgba(255, 255, 255, 0.4);">Putih (W)</button>
+              <button type="button" class="chip-btn" data-solid="solid-black" style="color: #94a3b8; border-color: rgba(148, 163, 184, 0.4);">Hitam (K)</button>
+              <button type="button" class="chip-btn" id="btnAutoColorCycle" style="color: var(--accent-magenta); border-color: rgba(255, 0, 127, 0.4);">🔄 Auto Cycle</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Motion & Radar Animation Controls -->
+          <div class="form-group" style="background: rgba(10, 14, 23, 0.75); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 0.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Animasi & Motion Test 60 FPS
+              </span>
+              <label class="toggle-item" style="padding: 0;">
+                <span class="toggle-label" style="font-size: 0.75rem; margin-right: 0.3rem;">Gerak</span>
+                <div class="switch">
+                  <input type="checkbox" id="toggleMovingBar" checked>
+                  <span class="slider-round"></span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Motion Style Selector Dropdown -->
+            <div class="form-group" style="margin-bottom: 0.4rem;">
+              <label class="form-label" style="font-size: 0.72rem;">Model Gerakan Motion</label>
+              <select id="selectMotionMode" class="form-select" style="padding: 0.4rem 0.7rem; font-size: 0.8rem;">
+                <option value="radar-pulse" selected>📡 Radar Circle Pulse (Membesar dari Tengah)</option>
+                <option value="rotating-radar">🧭 360° Rotating Radar Beam (Sinar Berputar)</option>
+                <option value="horizontal-bar">↔️ Moving Bar Horizontal (Kiri ke Kanan)</option>
+                <option value="vertical-bar">↕️ Moving Bar Vertical (Atas ke Bawah)</option>
+                <option value="diagonal-bar">↗️ Moving Bar Diagonal 45°</option>
+                <option value="bouncing-ball">🎾 Bouncing Optical Judder Ball (Bola Pantul)</option>
+              </select>
+            </div>
+
+            <label class="toggle-item" style="padding: 0.2rem 0 0 0;">
+              <span class="toggle-label" style="font-size: 0.78rem;">Jam Digital & Frame Counter</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleDigitalClock" checked>
+                <span class="slider-round"></span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Visual Overlay Toggles -->
+          <div class="form-group">
+            <label class="form-label">Elemen Overlay Layar</label>
+            
+            <label class="toggle-item">
+              <span class="toggle-label">Garis Grid Sambungan Cabinet</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleCabinetGrid" checked>
+                <span class="slider-round"></span>
+              </div>
+            </label>
+
+            <label class="toggle-item">
+              <span class="toggle-label">Garis Safe Zone (80% / 90%)</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleSafeZones">
+                <span class="slider-round"></span>
+              </div>
+            </label>
+
+            <label class="toggle-item">
+              <span class="toggle-label">Pojok Checkerboard 1px Sharpness</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleCheckerCorner">
+                <span class="slider-round"></span>
+              </div>
+            </label>
+
+            <label class="toggle-item">
+              <span class="toggle-label">Lingkaran Geometri & Crosshair</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleCenterCircle">
+                <span class="slider-round"></span>
+              </div>
+            </label>
+
+            <label class="toggle-item">
+              <span class="toggle-label">Badge Informasi Spesifikasi Layar</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleInfoBadge" checked>
+                <span class="slider-round"></span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Custom Logo Settings Card -->
+          <div class="form-group" style="background: rgba(10, 14, 23, 0.85); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 0.85rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+              <span style="display: flex; align-items: center; gap: 0.4rem; color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                Logo Perusahaan & Watermark
+              </span>
+              <label class="toggle-item" style="padding: 0;">
+                <span class="toggle-label" style="font-size: 0.75rem; margin-right: 0.4rem;">Aktif</span>
+                <div class="switch">
+                  <input type="checkbox" id="toggleShowLogo" checked>
+                  <span class="slider-round"></span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Live Logo Preview Box -->
+            <div style="display: flex; align-items: center; gap: 0.75rem; background: rgba(0, 0, 0, 0.5); border: 1px dashed rgba(0, 229, 255, 0.4); border-radius: var(--radius-sm); padding: 0.5rem 0.75rem; margin-bottom: 0.6rem;">
+              <div style="width: 80px; height: 40px; background: rgba(255, 255, 255, 0.08); border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px;">
+                <img id="logoPreviewThumb" src="assets/logo-horizontal.png" alt="Preview Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+              </div>
+              <div style="flex: 1; overflow: hidden;">
+                <div id="logoStatusText" style="font-size: 0.78rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Logo TTI Full (Horizontal)</div>
+                <div style="font-size: 0.68rem; color: var(--text-muted);">PNG Transparan / High-Res Vector</div>
+              </div>
+            </div>
+            
+            <!-- Logo Preset & Upload Action Buttons -->
+            <input type="file" id="inputLogoUpload" accept="image/*" style="display: none;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-bottom: 0.4rem;">
+              <button type="button" class="btn btn-secondary btn-sm" id="btnLogoTTIFull" style="font-size: 0.72rem; padding: 0.35rem 0.5rem; justify-content: center;" title="Gunakan Logo TTI Horizontal Full Text">
+                🏢 TTI Horizontal
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnLogoTTIIcon" style="font-size: 0.72rem; padding: 0.35rem 0.5rem; justify-content: center;" title="Gunakan Logo TTI Icon Square">
+                🔷 TTI Icon Square
+              </button>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 0.4rem; margin-bottom: 0.6rem;">
+              <button type="button" class="btn btn-primary btn-sm" id="btnTriggerUpload" style="font-size: 0.75rem; padding: 0.35rem 0.6rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Upload File Sendiri
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnClearLogo" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; color: #f43f5e;" title="Sembunyikan Logo">✕ Sembunyikan</button>
+            </div>
+
+            <!-- Position & Size Controls -->
+            <div class="input-row">
+              <div>
+                <label class="form-label" style="font-size: 0.72rem;">Posisi Logo</label>
+                <select id="selectLogoPosition" class="form-select" style="padding: 0.35rem 0.6rem; font-size: 0.75rem;">
+                  <option value="top-right" selected>Pojok Kanan Atas</option>
+                  <option value="top-left">Pojok Kiri Atas</option>
+                  <option value="bottom-right">Pojok Kanan Bawah</option>
+                  <option value="bottom-left">Pojok Kiri Bawah</option>
+                  <option value="center">Tengah (Watermark)</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" style="font-size: 0.72rem;">
+                  Ukuran Logo: <span id="logoScaleValText" style="color: var(--accent-cyan); font-weight: 700;">100%</span>
+                </label>
+                <input type="range" id="inputLogoScale" min="0.4" max="3.5" step="0.1" value="1.0" style="width: 100%; accent-color: var(--accent-cyan); margin-top: 0.2rem;">
+                <div class="chip-row" style="margin-top: 0.3rem;">
+                  <button type="button" class="chip-btn" data-logosize="0.7" style="padding: 0.15rem 0.4rem; font-size: 0.65rem;">70%</button>
+                  <button type="button" class="chip-btn" data-logosize="1.0" style="padding: 0.15rem 0.4rem; font-size: 0.65rem;">100%</button>
+                  <button type="button" class="chip-btn" data-logosize="1.5" style="padding: 0.15rem 0.4rem; font-size: 0.65rem;">150%</button>
+                  <button type="button" class="chip-btn" data-logosize="2.2" style="padding: 0.15rem 0.4rem; font-size: 0.65rem;">220%</button>
+                  <button type="button" class="chip-btn" data-logosize="3.0" style="padding: 0.15rem 0.4rem; font-size: 0.65rem;">300%</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Custom Badge Information Form -->
+          <div class="form-group" style="background: rgba(10, 14, 23, 0.75); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 0.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                Kustomisasi Badge Informasi (Semua Baris)
+              </span>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnAutoSyncBadge" style="padding: 0.15rem 0.5rem; font-size: 0.68rem;" title="Reset ke teks otomatis kalkulator">🔄 Auto-Fill</button>
+            </div>
+
+            <!-- Baris 1: Company Title -->
+            <div class="form-group" style="margin-bottom: 0.4rem;">
+              <label class="form-label" style="font-size: 0.72rem;">Baris 1: Nama Perusahaan / Header</label>
+              <input type="text" id="inputBadgeCompany" class="form-input" style="padding: 0.4rem 0.7rem; font-size: 0.82rem;" value="PT. TRANS TECHNOLOGY INDONESIA (TTI)">
+            </div>
+
+            <!-- Baris 2: Project / Event Name -->
+            <div class="form-group" style="margin-bottom: 0.4rem;">
+              <label class="form-label" style="font-size: 0.72rem;">Baris 2: Nama Project / Event / Lokasi</label>
+              <input type="text" id="inputBadgeProject" class="form-input" style="padding: 0.4rem 0.7rem; font-size: 0.82rem;" value="LED SCREEN TECHNICAL CALIBRATION & ALIGNMENT CARD">
+            </div>
+
+            <!-- Baris 3: Resolution & Aspect -->
+            <div class="form-group" style="margin-bottom: 0.4rem;">
+              <label class="form-label" style="font-size: 0.72rem;">Baris 3: Teks Resolusi & Aspek Rasio (Auto/Custom)</label>
+              <input type="text" id="inputBadgeResolution" class="form-input" style="padding: 0.4rem 0.7rem; font-size: 0.82rem;" value="1920 × 1152 PX  •  5:3 (1.67:1)">
+            </div>
+
+            <!-- Baris 4: Hardware Specs -->
+            <div class="form-group" style="margin-bottom: 0.4rem;">
+              <label class="form-label" style="font-size: 0.72rem;">Baris 4: Teks Spesifikasi Teknis & Ukuran</label>
+              <input type="text" id="inputBadgeSpecs" class="form-input" style="padding: 0.4rem 0.7rem; font-size: 0.82rem;" value="Unilumin P2.604 Rental Pro  |  5.000m × 3.000m (15.00 m²)  |  10×6 (60 Cabs)">
+            </div>
+
+            <!-- Baris 5: Footer / Date / Operator -->
+            <div class="form-group" style="margin-bottom: 0.4rem;">
+              <label class="form-label" style="font-size: 0.72rem;">Baris 5: Operator / Tanggal / Catatan Kaki</label>
+              <input type="text" id="inputBadgeFooter" class="form-input" style="padding: 0.4rem 0.7rem; font-size: 0.82rem;" value="TTI Engineering Team • Calibration Passed">
+            </div>
+
+            <!-- Badge Position Dropdown -->
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.72rem;">Posisi Kotak Badge</label>
+              <select id="selectBadgePosition" class="form-select" style="padding: 0.35rem 0.6rem; font-size: 0.75rem;">
+                <option value="bottom-center" selected>Bawah Tengah (Standard Lower-Third)</option>
+                <option value="center">Tengah Layar (Center)</option>
+                <option value="top-center">Atas Tengah (Top)</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Studio Stage (Right Viewport) -->
+        <div class="studio-stage">
+          
+          <!-- Viewport Toolbar -->
+          <div class="glass-panel stage-toolbar">
+            <div class="stage-info">
+              <span class="pill pill-cyan">Canvas 1:1 Pixel</span>
+              <span class="res-tag" id="studioResTag">1920 × 1152 PX</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);" id="studioAspectTag">5:3 Ratio</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <!-- Play / Pause Animation -->
+              <button class="btn btn-secondary btn-sm" id="btnToggleAnim">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="animPlayIcon">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span id="animBtnText">Pause Animasi</span>
+              </button>
+
+              <!-- Fullscreen Button -->
+              <button class="btn btn-secondary btn-sm" id="btnFullscreenModal">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <polyline points="9 21 3 21 3 15"></polyline>
+                  <line x1="21" y1="3" x2="14" y2="10"></line>
+                  <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+                Fullscreen
+              </button>
+
+              <!-- Download Image PNG Button -->
+              <button class="btn btn-primary btn-sm" id="btnDownloadPNG">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PNG
+              </button>
+
+              <!-- Video Export Configuration & Trigger -->
+              <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255, 0, 127, 0.1); border: 1px solid rgba(255, 0, 127, 0.3); border-radius: var(--radius-md); padding: 0.2rem 0.4rem;">
+                <select id="selectVideoResolution" class="form-select" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: rgba(10, 14, 23, 0.9); width: auto;">
+                  <option value="native">Resolusi Layar (1:1 Real)</option>
+                  <option value="4k" selected>✨ 4K UHD (3840×2160)</option>
+                  <option value="1080p">Full HD (1920×1080)</option>
+                  <option value="2k">2K QHD (2560×1440)</option>
+                </select>
+                <select id="selectVideoDuration" class="form-select" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: rgba(10, 14, 23, 0.9); width: auto;">
+                  <option value="5" selected>5 Detik</option>
+                  <option value="10">10 Detik</option>
+                  <option value="15">15 Detik</option>
+                </select>
+                <button class="btn btn-accent btn-sm" id="btnRecordVideo">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                  Rekam Video 60fps
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Canvas Container Viewport -->
+          <div class="canvas-viewport-card">
+            <canvas id="testcardCanvas" width="1920" height="1152"></canvas>
+            
+            <!-- Recording Progress Overlay -->
+            <div class="recording-bar-overlay" id="recordingOverlay">
+              <div class="recording-dot"></div>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #fff;">Merekam Video 60 FPS <span id="recordResBadge" style="color: var(--accent-cyan); font-weight: 800;">[4K UHD]</span>... (<span id="recordProgressVal">0%</span>)</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 3: DIAGRAM JALUR KABEL (DATA ROUTING)
+         ==================================================================== -->
+    <section class="view-section" id="tab-cabling">
+      <div class="glass-panel cabling-layout" style="padding: 1.5rem;">
+        
+        <!-- Header Bar -->
+        <div class="cabling-header-bar" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+          <div>
+            <h2 class="section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="6" height="6" rx="1"></rect>
+                <rect x="16" y="2" width="6" height="6" rx="1"></rect>
+                <rect x="9" y="16" width="6" height="6" rx="1"></rect>
+                <path d="M5 8v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"></path>
+                <path d="M12 12v4"></path>
+              </svg>
+              Diagram Jalur Data Controller & Susunan Cabinet
+            </h2>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.2rem;">
+              Simulasi alur pengkabelan data RJ45 (Daisy-chain) dari prosesor NovaStar ke receiving card setiap cabinet layar.
+            </p>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-secondary btn-sm" id="btnDownloadCablingSVG">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Diagram SVG
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btnPrintCabling">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Cetak / Print
+            </button>
+          </div>
+        </div>
+
+        <!-- Mode Selector Toolbar -->
+        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(10, 14, 23, 0.85); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 0.6rem 0.85rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+          
+          <!-- Mode Switcher Buttons -->
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Mode Routing:</span>
+            <div class="mode-switch-group" id="cablingModeGroup" style="min-width: 320px;">
+              <button type="button" class="mode-btn active" id="btnCablingModeAuto" data-cabmode="auto">
+                ⚡ Otomatis (By Sistem)
+              </button>
+              <button type="button" class="mode-btn" id="btnCablingModeCustom" data-cabmode="custom">
+                ✏️ Custom (Routing Sendiri)
+              </button>
+            </div>
+          </div>
+
+          <!-- Controls for Mode 1: Auto -->
+          <div id="cablingAutoControls" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <label style="font-size: 0.75rem; color: var(--text-secondary);">Pola Alur:</label>
+              <select id="selectAutoRoutePattern" class="form-select" style="padding: 0.35rem 0.65rem; font-size: 0.78rem; width: auto;">
+                <option value="s-vertical-bottom-up" selected>🔄 S-Shape Vertikal (Bawah ke Atas - Standar Rental)</option>
+                <option value="s-vertical-top-down">🔄 S-Shape Vertikal (Atas ke Bawah)</option>
+                <option value="s-horizontal-lr">↔️ S-Shape Horizontal (Kiri ke Kanan)</option>
+                <option value="s-horizontal-rl">↔️ S-Shape Horizontal (Kanan ke Kiri)</option>
+              </select>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <label style="font-size: 0.75rem; color: var(--text-secondary);" title="Maksimal jumlah cabinet dalam 1 tarikan kabel data port">Maks Cab/Tarikan:</label>
+              <input type="number" id="inputAutoMaxCabPerPort" class="form-input" value="12" min="1" max="40" step="1" style="width: 65px; padding: 0.35rem 0.5rem; font-size: 0.78rem; text-align: center;" title="Ubah batas maksimal cabinet per tarikan kabel port (default 12)">
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <label style="font-size: 0.75rem; color: var(--text-secondary);">Filter Port:</label>
+              <select id="selectPortFilter" class="form-select" style="padding: 0.35rem 0.65rem; font-size: 0.78rem; width: auto;">
+                <option value="all">Semua Port Controller</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Controls for Mode 2: Custom -->
+          <div id="cablingCustomControls" style="display: none; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnCustomUndo" style="font-size: 0.75rem; padding: 0.35rem 0.6rem;" title="Batalkan klik cabinet terakhir">
+              ↩️ Undo
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnCustomClearPort" style="font-size: 0.75rem; padding: 0.35rem 0.6rem;" title="Kosongkan jalur port aktif ini">
+              🧹 Reset Port Ini
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnCustomAutoFill" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; color: var(--accent-cyan);" title="Lanjutkan sisa cabinet otomatis">
+              ⚡ Auto-Isi Sisa
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnCustomResetAll" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; color: #f43f5e;" title="Kosongkan semua jalur">
+              🗑️ Reset Semua
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Custom Mode Active Port Palette & Guidance Bar (Visible in Custom Mode) -->
+        <div id="cablingCustomPortBar" style="display: none; background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: var(--radius-md); padding: 0.75rem 1rem; margin-bottom: 1rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.6rem;">
+            <div style="font-size: 0.78rem; color: var(--text-primary); font-weight: 600; display: flex; align-items: center; gap: 0.4rem;">
+              <span>Pilih Port NovaStar yang Ingin Ditarik Jalurnya:</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary btn-sm" id="btnAddCustomPort" style="font-size: 0.72rem; padding: 0.25rem 0.65rem; background: linear-gradient(135deg, #00e5ff, #0070f3);" title="Tambah Jalur / Tarikan Kabel Port Baru Tanpa Batas">
+                ➕ Tambah Tarikan / Port Baru
+              </button>
+              <div id="customProgressStatus" style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700;">
+                0 / 60 Cabinet Terpasang (0%)
+              </div>
+            </div>
+          </div>
+
+          <!-- Port Buttons Grid (Clean scrollable grid for large port counts) -->
+          <div id="customPortButtonGroup" style="display: flex; flex-wrap: wrap; gap: 0.4rem; max-height: 140px; overflow-y: auto; padding-right: 0.3rem;">
+            <!-- Dynamically populated port buttons -->
+          </div>
+
+          <!-- Interactive Tip Banner -->
+          <div style="margin-top: 0.6rem; font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+            <span>💡 <em>Petunjuk:</em> Klik cabinet secara berurutan pada diagram di bawah untuk menyambungkan kabel. Klik lagi pada cabinet terakhir untuk membatalkan sambungan.</span>
+          </div>
+        </div>
+
+        <!-- Cabling Viewport Toolbar (Zoom & Matrix Info) -->
+        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(10, 14, 23, 0.7); border: 1px solid var(--border-glass); border-bottom: none; border-radius: var(--radius-md) var(--radius-md) 0 0; padding: 0.5rem 0.85rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem;">
+            <span class="pill pill-cyan" id="cablingMatrixBadge">10 Kolom × 6 Baris</span>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="cablingAreaBadge">60 Cabinet (~15.0 m²)</span>
+            <span style="font-size: 0.7rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.25rem;">🖐️ <em>Drag untuk geser posisi</em></span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.35rem;">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnResetPanCabling" style="padding: 0.2rem 0.55rem; font-size: 0.72rem;" title="Pusatkan Posisi Diagram (Reset Pan)">
+              ↺ Reset Posisi
+            </button>
+            <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 0.3rem; margin-right: 0.2rem;">Zoom:</span>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnZoomOutCabling" style="padding: 0.2rem 0.55rem; font-size: 0.75rem;" title="Zoom Out (-)">
+              🔍 -
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnZoomResetCabling" style="padding: 0.2rem 0.55rem; font-size: 0.72rem;" title="Reset Zoom ke 100%">
+              <span id="cablingZoomPercentText">100%</span>
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btnZoomInCabling" style="padding: 0.2rem 0.55rem; font-size: 0.75rem;" title="Zoom In (+)">
+              🔍 +
+            </button>
+          </div>
+        </div>
+
+        <!-- SVG Visualizer Canvas Container (Scrollable viewport for 75m²+ displays) -->
+        <div class="cabling-canvas-container" id="cablingDiagramContainer" style="background: rgba(5, 8, 14, 0.95); border: 1px solid var(--border-glass); border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 1.25rem; overflow: auto; max-height: 680px; min-height: 480px; display: flex; align-items: flex-start; justify-content: center;">
+          <!-- Dynamically generated SVG -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fullscreen Modal Player for Direct Screen Calibration -->
+  <div class="fullscreen-modal" id="fullscreenPlayerModal">
+    <canvas id="fullscreenCanvas"></canvas>
+    <div class="fullscreen-controls-hud">
+      <span>Tekan <strong>ESC</strong> untuk keluar Fullscreen</span>
+      <button class="btn btn-secondary btn-sm" id="btnCloseFullscreen" style="padding: 0.2rem 0.6rem; font-size: 0.7rem;">Keluar</button>
+    </div>
+  </div>
+
+  <!-- Application Logic Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
