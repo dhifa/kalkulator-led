@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#0070F3" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF007F" />
+      <stop offset="100%" stop-color="#7928CA" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon Symbol -->
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="48" height="48" rx="10" fill="url(#logoGrad)" />
+    <path d="M12 16 L36 16 M24 16 L24 38" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="36" cy="36" r="3.5" fill="url(#accentGrad)" />
+  </g>
+
+  <!-- Typography -->
+  <text x="68" y="34" fill="#FFFFFF" font-family="'Inter', sans-serif" font-weight="900" font-size="24" letter-spacing="1">TTI</text>
+  <text x="116" y="34" fill="#00E5FF" font-family="'Inter', sans-serif" font-weight="700" font-size="14" letter-spacing="1.5">VIDEOTRON</text>
+  <text x="68" y="50" fill="#94A3B8" font-family="'Inter', sans-serif" font-weight="600" font-size="9" letter-spacing="2.5">TRANS TECHNOLOGY INDONESIA</text>
+</svg>
